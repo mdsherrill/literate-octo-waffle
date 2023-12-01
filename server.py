@@ -18,9 +18,6 @@ print(f'Server started up. Starting up balance at ${userBalance}.')
 
 # -----------------------------------------------------------------------------
 
-userBalance = 100
-print(f'Server started up. Starting up balance at ${userBalance}.')
-
 while True:
     # Use select to wait for incoming connections with a timeout of 10 seconds
     ready, _, _ = select.select([server_socket], [], [], TIMEOUT_VAL)
