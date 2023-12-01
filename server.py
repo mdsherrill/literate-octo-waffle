@@ -44,7 +44,7 @@ while True:
                 print('Received Deposit')
                 add_amt = data.strip('bdrwc')
                 userBalance += int(add_amt)
-                print(f'Added {add_amt}. New balance: ${userBalance}')
+                print(f'Added ${add_amt}. New balance: ${userBalance}')
 
                 response = 'y' + str(userBalance)
                 client_socket.send(response.encode())           # SEND
@@ -53,7 +53,7 @@ while True:
                 print('Received valid withdrawal.')
                 sub_amt = data.strip('bdwrc')
                 userBalance -= int(sub_amt)
-                print(f'Subtracted {sub_amt}. New balance: ${userBalance}')
+                print(f'Subtracted ${sub_amt}. New balance: ${userBalance}')
 
                 response = 'y' + str(userBalance)
                 client_socket.send(response.encode())
@@ -61,9 +61,8 @@ while True:
             elif 'e' in data:
                 print('Received ending signal.')
                 client_socket.close()
-                server_socket.listen(1)
-                client_socket, client_address = server_socket.accept()
-                # break
+                # exit()
+                break
         except Exception as e:
             print('Server crashed :( ', e)
             # client_socket.close()

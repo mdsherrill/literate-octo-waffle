@@ -1,6 +1,5 @@
 # Matthew Sherrill, 010956298
 import socket
-import sys
 
 # Setup socket information
 client_socket = socket.socket()
@@ -29,7 +28,6 @@ def printMenu():
         elif choice == '3':
             tempBal = checkBalance()
             print(f'Your balance is ${tempBal}.')
-            # checkBalance()
         elif choice == '4':
             client_socket.sendall('e'.encode())
             print("Closing SherrillATM...")
@@ -94,7 +92,7 @@ def withdrawal():
     response = client_socket.recv(1024).decode()
     # print(f'Response from server: {response}')
     if 'y' in response:
-        print(f'${drawAmount_str} was successfully deposited into your account.')
+        print(f'${drawAmount_str} was successfully withdrawn into your account.')
     else:
         print("Deposit failed to reach server.")
 
